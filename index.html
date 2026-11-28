@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Hábitos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="contenedor">
+
+    <!-- Encabezado: título, fecha de hoy y progreso del día -->
+    <header class="encabezado">
+      <h1>Mis Hábitos</h1>
+      <p id="fecha-hoy" class="fecha"></p>
+
+      <div class="progreso">
+        <p id="texto-progreso"></p>
+        <div class="barra">
+          <div id="barra-relleno" class="barra-relleno"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Formulario para agregar un hábito nuevo -->
+    <form id="form-habito" class="form-habito">
+      <input
+        id="input-habito"
+        type="text"
+        placeholder="Nuevo hábito (ej: leer 20 minutos)"
+        maxlength="60"
+        required
+        autocomplete="off"
+      >
+      <button type="submit">Agregar</button>
+    </form>
+
+    <!-- Aquí JavaScript dibuja la lista de hábitos -->
+    <ul id="lista-habitos" class="lista-habitos"></ul>
+
+    <p id="mensaje-vacio" class="mensaje-vacio">
+      Aún no tienes hábitos. ¡Agrega el primero arriba! 🌱
+    </p>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

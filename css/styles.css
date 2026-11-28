@@ -1,0 +1,209 @@
+/* ===== Variables de color (cambian solas en modo oscuro) ===== */
+:root {
+  --fondo: #f4f5f7;
+  --tarjeta: #ffffff;
+  --texto: #1f2328;
+  --texto-suave: #6b7280;
+  --borde: #e2e4e8;
+  --principal: #16a34a;
+  --principal-suave: #dcfce7;
+  --peligro: #dc2626;
+  --radio: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0f1115;
+    --tarjeta: #1a1d23;
+    --texto: #e6e8eb;
+    --texto-suave: #9aa1ab;
+    --borde: #2c3038;
+    --principal: #22c55e;
+    --principal-suave: #14301f;
+  }
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.contenedor {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ===== Encabezado ===== */
+.encabezado h1 {
+  font-size: 1.8rem;
+}
+
+.fecha {
+  color: var(--texto-suave);
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.progreso p {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.barra {
+  height: 8px;
+  background: var(--borde);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-relleno {
+  height: 100%;
+  width: 0;
+  background: var(--principal);
+  transition: width 0.3s ease;
+}
+
+/* ===== Formulario ===== */
+.form-habito {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.form-habito input {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--tarjeta);
+  color: var(--texto);
+}
+
+.form-habito input:focus {
+  outline: 2px solid var(--principal);
+  outline-offset: 1px;
+}
+
+.form-habito button {
+  padding: 0 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radio);
+  background: var(--principal);
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-habito button:hover {
+  filter: brightness(1.1);
+}
+
+/* ===== Lista de hábitos ===== */
+.lista-habitos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.habito {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+.habito-nombre {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.habito-racha {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.eliminar {
+  align-self: start;
+  border: none;
+  background: none;
+  color: var(--texto-suave);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+}
+
+.eliminar:hover {
+  color: var(--peligro);
+}
+
+/* Fila con los últimos 7 días */
+.semana {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem 0;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dia strong {
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+.dia:hover {
+  border-color: var(--principal);
+}
+
+.dia.hoy {
+  border-width: 2px;
+  border-color: var(--principal);
+}
+
+.dia.hecho {
+  background: var(--principal);
+  border-color: var(--principal);
+  color: #fff;
+}
+
+.dia.hecho strong {
+  color: #fff;
+}
+
+/* ===== Mensaje cuando no hay hábitos ===== */
+.mensaje-vacio {
+  text-align: center;
+  color: var(--texto-suave);
+  margin-top: 2rem;
+}
